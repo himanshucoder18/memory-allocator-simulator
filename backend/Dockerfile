@@ -1,22 +1,25 @@
-# Use official Java 21 image
-FROM eclipse-temurin:21-jdk-alpine
+# ===== Build Stage =====
+FROM maven:3.9.9-eclipse-temurin-21 AS build
 
-# Set working directory
 WORKDIR /app
 
-# Copy Maven wrapper and pom.xml
-COPY mvnw .
-COPY .mvn .mvn
+# Copy pom and source
 COPY pom.xml .
-
-# Copy source code
-COPY src src
-
-# Make mvnw executable
-RUN chmod +x mvnw
+COPY src ./src
 
 # Build the application
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
-# Run the jar
-CMD ["java", "-jar", "target/backend-0.0.1-SNAPSHOT.jar"]
+# ===== Run Stage =====
+FROM eclipse-temurin:21-jre-alpine
+
+WORKDIR /app
+
+# Copy the jar from build stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Expose port
+EXPOSE 8080
+
+# Start the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
