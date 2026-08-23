@@ -1,0 +1,32 @@
+:root {
+  /* New Color Palette - Inspired by your reference */
+  --primary: #1a2b6b;           /* Deep rich blue */
+  --primary-dark: #0f1c4d;
+  --primary-light: #2a3f8f;
+
+  --accent: #00c853;            /* Bright green (like the search button) */
+  --accent-hover: #00e676;
+
+  --secondary: #7c4dff;         /* Purple */
+  --danger: #ff5252;
+
+  --bg-body: #f0f4ff;           /* Soft light blue-gray background */
+  --bg-card: #ffffff;
+  --bg-hero: linear-gradient(135deg, #1a2b6b 0%, #2a3f8f 100%);
+
+  --text-primary: #1a1a2e;
+  --text-secondary: #5a6577;
+  --text-white: #ffffff;
+  --text-muted: #8b95a5;
+
+  --shadow-sm: 0 2px 8px rgba(26, 43, 107, 0.08);
+  --shadow-md: 0 8px 24px rgba(26, 43, 107, 0.12);
+  --shadow-lg: 0 16px 40px rgba(26, 43, 107, 0.15);
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
